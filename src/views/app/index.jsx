@@ -1,62 +1,40 @@
 import React from 'react';
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { createStore, compose, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import reducer from '../../reducers'
+import root from '../../sagas'
+
+import t1 from './t1'
+import t2 from './t2'
 
 import './reset';
 import './style';
 
 import Wrapper from '../../components/wrapper';
-import Container from '../../components/container';
+
+const sagaMiddleware = createSagaMiddleware()
+const store = createStore(
+  reducer,
+  compose(
+      applyMiddleware(sagaMiddleware),
+      window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
+)
+sagaMiddleware.run(root)
 
 class App extends React.Component {
   render() {
     return (
-      <React.Fragment>
-        <h1>Hello UI!</h1>
-        <h2>Hello</h2>
-        <h3>Hello</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum hic
-          voluptatem dolorem optio laboriosam minus ea commodi mollitia, ab
-          reiciendis explicabo enim illo nulla? Ut iusto dicta voluptatibus
-          reprehenderit facilis!
-        </p>
-        <a href="https://github.com/AllThingsSmitty/css-protips" />
-        <p />
-        <a href="https://github.com/AllThingsSmitty/css-protips">CSS Protips</a>
-        <Wrapper>
-          <Container>
-            <h1>Hello UI!</h1>
-            <h2>Hello</h2>
-            <h3>Hello</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum hic
-              voluptatem dolorem optio laboriosam minus ea commodi mollitia, ab
-              reiciendis explicabo enim illo nulla? Ut iusto dicta voluptatibus
-              reprehenderit facilis!
-            </p>
-            <a href="https://github.com/AllThingsSmitty/css-protips" />
-            <p />
-            <a href="https://github.com/AllThingsSmitty/css-protips">
-              CSS Protips
-            </a>
-          </Container>
-        </Wrapper>
-        <Wrapper fullscreen>
-          <h1>Hello UI!</h1>
-          <h2>Hello</h2>
-          <h3>Hello</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum hic
-            voluptatem dolorem optio laboriosam minus ea commodi mollitia, ab
-            reiciendis explicabo enim illo nulla? Ut iusto dicta voluptatibus
-            reprehenderit facilis!
-          </p>
-          <a href="https://github.com/AllThingsSmitty/css-protips" />
-          <p />
-          <a href="https://github.com/AllThingsSmitty/css-protips">
-            CSS Protips
-          </a>
-        </Wrapper>
-      </React.Fragment>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route exact path='/' component={t1}/>
+            <Route exact path='/edit' component={t2}/>
+          </Switch>
+        </Router>
+      </Provider>
     );
   }
 }

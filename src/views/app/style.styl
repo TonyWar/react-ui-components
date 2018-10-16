@@ -1,12 +1,6 @@
-$color-1 = #008000
 // href only link
 a[href^="http"]:empty::before
   content attr(href)
-
-// default link
-a[href]:not([class])
-  color $color-1
-  text-decoration underline
 
 // responsive font size
 :root
