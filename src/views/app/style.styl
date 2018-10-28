@@ -6,13 +6,14 @@ a[href^="http"]:empty::before
 :root
   font-size calc(1vw + 1vh + .5vmin)
 
-// use em for responsive font size
-body
-  font 1rem/1.6 sans-serif
-
 $dark = #2C2C3C
 $light = #F0F2F4
 $secondary = #F27E02
+
+// use em for responsive font size
+body
+  font 1rem/1.6 sans-serif
+  background-color: $light
 
 .bg-dark
   background-color: $dark
@@ -20,4 +21,8 @@ $secondary = #F27E02
 
 .bg-light
   background-color $light
-  color: #333333
+  color: #2C2C3C
+
+.bg-default
+  background-color #ffffff
+  color: #2C2C3C
