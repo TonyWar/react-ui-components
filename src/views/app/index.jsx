@@ -6,13 +6,9 @@ import createSagaMiddleware from 'redux-saga'
 import reducer from '../../reducers'
 import root from '../../sagas'
 
-import t1 from './t1'
-import t2 from './t2'
-
 import './reset';
 import './style';
-
-import Wrapper from '../../components/wrapper';
+import Blog from '../blog';
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
@@ -30,8 +26,7 @@ class App extends React.Component {
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route exact path='/' component={t1}/>
-            <Route exact path='/edit' component={t2}/>
+            <Route exact path='/' component={Blog}/>
           </Switch>
         </Router>
       </Provider>
