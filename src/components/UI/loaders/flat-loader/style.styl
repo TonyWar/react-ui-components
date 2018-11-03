@@ -1,0 +1,38 @@
+$dark = #2C2C3C
+$light = #F0F2F4
+$secondary = #F27E02
+
+.flat-loader
+    position relative
+    width 50px
+    height 50px
+    display inline-flex
+    background-color transparent
+    border-radius 50%
+
+    &.light
+      border 5px solid $light
+    &.dark
+      border 5px solid $dark
+
+    &:after
+        position absolute
+        content ""
+        top 0px
+        left 0px
+        width 50px
+        height 50px
+        padding 3px
+        border-width 2px
+        border-style solid
+        border-color $secondary transparent transparent transparent
+        border-radius 50%
+        box-sizing border-box
+        animation ringrotate .8s infinite ease-in-out
+
+@keyframes ringrotate
+    0%
+        transform rotateZ(0deg)
+
+    100%
+        transform rotateZ(360deg)
