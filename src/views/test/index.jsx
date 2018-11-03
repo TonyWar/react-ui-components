@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-class TestPage extends React.Component {
-  render () {
+export default class TestPage extends React.Component {
+  render() {
     return (
-      <div>Test</div>
-    )
+      <div>
+        Test
+      </div>
+    );
   }
 }
-
-export default TestPage
