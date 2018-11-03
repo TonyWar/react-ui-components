@@ -1,0 +1,37 @@
+$d = 100px
+$r = 1500;
+$t = .5s;
+$r1 = .5*$r;
+$r2 = $r - $r1;
+$rmin = .25*$r;
+$rmax = $r - $rmin;
+
+$circle_radius1 = $r1 / 3
+$circle_radius2 = $r2 / 3
+
+$dark = #2C2C3C
+$light = #F0F2F4
+
+.yin-yang-icon
+  width: $d
+  height: $d
+  border-radius: 50%
+  background-color $light
+  animation: r 2*$t linear infinite
+
+  path
+    d: path('M-'+$r+' 0 A'+$r+' '+$r+' 0 0 1 '+$r+' 0 A'+$r1+' '+$r1+' 0 0 1 '+($r - 2 * $r1)+' 0 A'+$r2+' '+$r2+' 0 0 0 -'+$r+' 0');
+    fill: $dark
+
+  circle 
+    &:nth-child(2)
+      r: $circle_radius1
+      cx: $r2
+      fill: $light
+
+    &:nth-child(3)
+      r: $circle_radius2
+      cx: - $r1;
+      fill: $dark
+
+@keyframes r { to { transform: rotate(1turn) } }
