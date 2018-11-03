@@ -8,7 +8,7 @@ import root from '../../sagas'
 
 import './reset';
 import './style';
-import Blog from '../blog';
+import TestPage from '../test';
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
@@ -26,7 +26,7 @@ class App extends React.Component {
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route exact path='/' component={Blog}/>
+            <Route exact path='/' component={TestPage}/>
           </Switch>
         </Router>
       </Provider>
