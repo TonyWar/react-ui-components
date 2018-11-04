@@ -1,0 +1,32 @@
+.circle
+  width: 12px;
+  height: 12px;
+  margin: 3px;
+  background: black;
+  border-radius: 50%;
+  display: block;
+
+.menu__item--kebab 
+  flex-direction: column;
+  position: relative;
+  transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  .circle:nth-child(4),
+  .circle:nth-child(5) 
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    margin-top: -6px;
+    left: 50%;
+  
+  .circle:nth-child(4) 
+    margin-left: -25px;
+  
+  .circle:nth-child(5) 
+    margin-left: 13px;
+  
+  &.active
+    transform: rotate(45deg);
+    .circle 
+      opacity: 1;
+    
+  
